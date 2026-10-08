@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boray Kaşkavalcı | Mechanical Engineering Student</title>
+<meta name="description" content="Personal website of Boray Kaşkavalcı, Mechanical Engineering student at Yaşar University in Izmir.">
+<meta name="theme-color" content="#0c111b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+  /* Concept: a technical document. Fixed index on the left, content flowing on the right.
+     One accent drawn from heat-treated steel (straw to blue). One moving part: two meshing gears. */
+  :root {
+    --ground: #0c111b;
+    --raised: #121a28;
+    --rule: #223047;
+    --ink: #e7ecf3;
+    --muted: #8f9db3;
+    --straw: #e2bb6a;
+    --straw-hi: #f3d28c;
+    --blue: #6f9de3;
+    --f-display: "Unbounded", "Arial Black", "Segoe UI", sans-serif;
+    --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; background: var(--ground); }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--f-body); font-size: 17px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--straw); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--straw-hi); }
+  :focus-visible { outline: 2px solid var(--straw); outline-offset: 3px; border-radius: 3px; }
+  h1, h2, h3 { margin: 0; font-weight: 600; }
+  h2 { font-family: var(--f-display); font-size: 1.35rem; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; }
+  h3 { font-size: 1.1rem; line-height: 1.35; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--straw); }
+
+  /* Frame */
+  .frame { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .index {
+    padding: 14px 16px; border-bottom: 1px solid var(--rule);
+    background: var(--ground); position: sticky; top: 0; z-index: 20;
+  }
+  .index-inner { display: flex; align-items: center; gap: 18px; }
+  .mark { font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; color: var(--ink); text-decoration: none; flex: none; }
+  .mark:hover { color: var(--straw); }
+  .index nav { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
+  .index nav::-webkit-scrollbar { display: none; }
+  .index nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .97rem; white-space: nowrap; padding-block: 4px; }
+  .index nav a:hover { color: var(--ink); }
+  .index nav a.on { color: var(--straw); }
+  .index-contact { display: none; }
+
+  main { padding: 0 16px 56px; }
+  .col { max-width: 760px; }
+
+  /* Hero */
+  .hero { padding-block: 40px 44px; display: grid; gap: 28px; }
+  h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.1rem, 9.5vw, 3.7rem); line-height: 1.08; letter-spacing: -0.03em; }
+  .temper { width: 132px; height: 4px; border-radius: 2px; margin: 22px 0 22px; background: linear-gradient(90deg, #e2bb6a 0%, #c98a4b 38%, #8a62c8 70%, #5f8fe0 100%); }
+  .lead { color: #c4cedc; font-size: 1.14rem; max-width: 34em; margin: 0; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 6px; font-weight: 600; font-size: .98rem;
+    text-decoration: none; border: 1.5px solid var(--straw); color: var(--straw);
+  }
+  .btn:hover { background: rgba(226, 187, 106, .1); color: var(--straw-hi); }
+  .btn.solid { background: var(--straw); color: #1a1405; }
+  .btn.solid:hover { background: var(--straw-hi); color: #1a1405; }
+  .gears { width: 100%; max-width: 360px; height: auto; display: block; }
+  .gears .g1, .gears .g2 { transform-box: fill-box; transform-origin: center; }
+  .gears .g1 { animation: spin 70s linear infinite; }
+  .gears .g2 { animation: spin 35s linear infinite reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Sections */
+  section { padding-block: 44px 8px; border-top: 1px solid var(--rule); }
+  .sec-head { margin-bottom: 26px; }
+  .sec-head p { color: var(--muted); margin: 8px 0 0; }
+
+  .spec { display: grid; grid-template-columns: minmax(0, 1fr); margin: 0; }
+  .spec div { display: grid; grid-template-columns: minmax(0, 1fr); padding-block: 12px; border-bottom: 1px solid var(--rule); gap: 2px; }
+  .spec dt { color: var(--muted); font-size: .95rem; }
+  .spec dd { margin: 0; font-weight: 500; }
+
+  /* Rows: date left, content right */
+  .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 22px; border-bottom: 1px solid var(--rule); }
+  .row:first-of-type { padding-top: 0; }
+  .row .when { color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; }
+  .row .sub { color: var(--muted); margin: 2px 0 10px; }
+  .coursework { margin-top: 22px; }
+  .coursework p { color: var(--muted); margin-bottom: 10px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { border: 1px solid var(--rule); background: var(--raised); border-radius: 4px; padding: 4px 11px; font-size: .94rem; }
+
+  .skillrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+  .skillrow:first-of-type { padding-top: 0; }
+  section > .row:last-child, section > .skillrow:last-child { border-bottom: 0; }
+  .skillrow h3 { font-size: 1rem; font-weight: 600; color: var(--ink); }
+
+  /* Contact and CV */
+  .links { display: grid; margin: 0; padding: 0; list-style: none; }
+  .links li { margin: 0; border-bottom: 1px solid var(--rule); }
+  .links a, .links .plain { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; padding-block: 14px; color: var(--ink); text-decoration: none; }
+  .links small { color: var(--muted); font-size: .92rem; }
+  .links .v { font-weight: 500; overflow-wrap: anywhere; }
+  .links a:hover .v { color: var(--straw-hi); }
+
+  .cv { margin-top: 56px; border: 1px solid var(--rule); border-radius: 10px; background: var(--raised); overflow: hidden; }
+  .cv::before { content: ""; display: block; height: 4px; background: linear-gradient(90deg, #e2bb6a 0%, #c98a4b 38%, #8a62c8 70%, #5f8fe0 100%); }
+  .cv-body { padding: 26px 22px 28px; display: grid; gap: 18px; }
+  .cv h2 { font-size: 1.25rem; }
+  .cv p { color: #c4cedc; margin: 8px 0 0; max-width: 32em; }
+
+  footer { margin-top: 36px; color: var(--muted); font-size: .92rem; }
+
+  /* Desktop: fixed index on the left */
+  @media (min-width: 900px) {
+    .frame { grid-template-columns: 250px minmax(0, 1fr); }
+    .index {
+      position: sticky; top: 0; height: 100vh; border-bottom: 0; border-right: 1px solid var(--rule);
+      padding: 40px 28px 32px; display: flex; flex-direction: column;
+    }
+    .index::after { content: ""; position: absolute; top: 0; right: -1px; width: 2px; height: 100%; background: linear-gradient(180deg, #e2bb6a 0%, #c98a4b 30%, #8a62c8 65%, #5f8fe0 100%); opacity: .55; }
+    .index-inner { flex-direction: column; align-items: flex-start; gap: 36px; flex: 1; }
+    .mark { font-size: 1.5rem; }
+    .index nav { flex-direction: column; gap: 6px; overflow: visible; }
+    .index nav a { font-size: 1.02rem; padding-block: 6px; }
+    .index-contact { display: grid; gap: 6px; font-size: .92rem; color: var(--muted); }
+    .index-contact a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+    .index-contact a:hover { color: var(--straw-hi); }
+    main { padding: 0 56px 72px; }
+    .hero { grid-template-columns: minmax(0, 1fr) 300px; align-items: center; padding-block: 76px 64px; gap: 36px; }
+    .spec div { grid-template-columns: 170px minmax(0, 1fr); gap: 16px; }
+    .row { grid-template-columns: 170px minmax(0, 1fr); gap: 24px; }
+    .skillrow { grid-template-columns: 200px minmax(0, 1fr); gap: 24px; }
+    .links a, .links .plain { grid-template-columns: 170px minmax(0, 1fr); gap: 16px; }
+    .cv-body { grid-template-columns: minmax(0, 1fr) auto; align-items: center; padding: 32px; }
+  }
+  @media (min-width: 1200px) { main { padding-inline: 88px; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .gears .g1, .gears .g2 { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <header class="index">
+    <div class="index-inner">
+      <a class="mark" href="#top" aria-label="Boray Kaşkavalcı, top of page">BK</a>
+      <nav aria-label="Sections">
+        <a href="#top" class="on">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="index-contact">
+        <a href="mailto:boraykaskavalci@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/boray-ka%C5%9Fkavalc%C4%B1-a6438383" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:+905353663926">Phone</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="col">
+
+      <div class="hero">
+        <div>
+          <h1>Boray<br>Kaşkavalcı</h1>
+          <div class="temper" aria-hidden="true"></div>
+          <p class="lead">I study mechanical engineering at Yaşar University in Izmir, with a focus on design, analysis and problem solving. I have interned at ZF Lemförder and work with clients as a luxury watch specialist.</p>
+          <div class="btns">
+            <a class="btn solid" href="#experience">See my experience</a>
+            <a class="btn" href="https://www.linkedin.com/in/boray-ka%C5%9Fkavalc%C4%B1-a6438383" target="_blank" rel="noopener">LinkedIn profile</a>
+          </div>
+        </div>
+        <svg class="gears" id="gears" viewBox="0 0 370 250" role="img" aria-label="Two meshing gears turning slowly"></svg>
+      </div>
+
+      <section id="about">
+        <div class="sec-head"><h2>About</h2></div>
+        <p>Mechanical Engineering student at Yaşar University with working knowledge of AutoCAD, Fusion 360 and MATLAB, backed by coursework in mechanical design, manufacturing processes, thermodynamics, heat transfer, materials science and energy efficiency. Completed an internship at ZF Lemförder and has two years of customer-facing experience as a Luxury Watch Specialist.</p>
+        <dl class="spec" style="margin-top: 22px;">
+          <div><dt>Program</dt><dd>B.Sc. Mechanical Engineering, since 2022</dd></div>
+          <div><dt>University</dt><dd>Yaşar University, Izmir</dd></div>
+          <div><dt>Internship</dt><dd>ZF Lemförder, August 2025</dd></div>
+          <div><dt>Languages</dt><dd>Turkish, English, German</dd></div>
+          <div><dt>Looking for</dt><dd>Internships and entry-level mechanical engineering roles</dd></div>
+        </dl>
+      </section>
+
+      <section id="education">
+        <div class="sec-head"><h2>Education</h2></div>
+        <div class="row">
+          <div class="when">Sep 2022 – present</div>
+          <div>
+            <h3>Yaşar University</h3>
+            <p class="sub">B.Sc. Mechanical Engineering, Izmir, Türkiye</p>
+            <ul>
+              <li>Used AutoCAD, Fusion 360, MATLAB and Microsoft Office in coursework and engineering projects.</li>
+              <li>Went in depth on mechanical design, manufacturing processes and energy efficiency.</li>
+            </ul>
+            <div class="coursework">
+              <p>Coursework</p>
+              <div class="tags"><span class="tag">Thermodynamics</span><span class="tag">Heat Transfer</span><span class="tag">Machine Design</span><span class="tag">Materials Science</span><span class="tag">Manufacturing Processes</span><span class="tag">Energy Efficiency</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">Sep 2018 – Jun 2022</div>
+          <div>
+            <h3>Bilfen Science High School</h3>
+            <p class="sub">High School Diploma</p>
+            <ul><li>Graduated with a 90 grade average.</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="sec-head"><h2>Experience</h2></div>
+        <div class="row">
+          <div class="when">Aug 2025, one month</div>
+          <div>
+            <h3>Mechanical Engineering Intern, ZF Lemförder</h3>
+            <p class="sub">Izmir, Türkiye</p>
+            <ul><li>One-month internship at an automotive supplier, gaining exposure to an industrial manufacturing setting.</li></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="when">2024 – present</div>
+          <div>
+            <h3>Luxury Watch Specialist</h3>
+            <p class="sub">Client sales and sourcing</p>
+            <ul>
+              <li>Process high-volume, high-value sales transactions accurately and with close attention to detail.</li>
+              <li>Guide clients on product choice, pricing and availability, and close sales through a consultative approach.</li>
+              <li>Sourced requested watches for clients within one week, coordinating with suppliers.</li>
+              <li>Maintain long-term client relationships and follow up after every sale.</li>
+              <li>Handle multiple client requests in parallel while keeping each transaction organised and on time.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="sec-head"><h2>Skills</h2></div>
+        <div class="skillrow"><h3>Design and CAD</h3><div class="tags"><span class="tag">Fusion 360</span><span class="tag">AutoCAD</span><span class="tag">3D Modelling</span><span class="tag">Technical Drawing</span><span class="tag">Engineering Drawings</span><span class="tag">Machine Design</span><span class="tag">Mechanical Design</span></div></div>
+        <div class="skillrow"><h3>Core engineering</h3><div class="tags"><span class="tag">Thermodynamics</span><span class="tag">Heat Transfer</span><span class="tag">Fluid Mechanics</span><span class="tag">Statics</span><span class="tag">Dynamics</span><span class="tag">Strength of Materials</span><span class="tag">Materials Science</span><span class="tag">Machine Elements</span></div></div>
+        <div class="skillrow"><h3>Manufacturing and quality</h3><div class="tags"><span class="tag">Manufacturing Processes</span><span class="tag">Machining Basics</span><span class="tag">Tolerances and GD&amp;T (basics)</span><span class="tag">Quality Control (basics)</span><span class="tag">Energy Efficiency</span></div></div>
+        <div class="skillrow"><h3>Programming and analysis</h3><div class="tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Engineering Calculations</span><span class="tag">Data Analysis</span><span class="tag">Finite Element Analysis (basics)</span></div></div>
+        <div class="skillrow"><h3>Sales and client work</h3><div class="tags"><span class="tag">Consultative Selling</span><span class="tag">High-Volume Transactions</span><span class="tag">Negotiation</span><span class="tag">Client Relationship Management</span><span class="tag">Sourcing and Supplier Coordination</span><span class="tag">Pricing and Availability Advice</span><span class="tag">After-Sales Follow-Up</span></div></div>
+        <div class="skillrow"><h3>Project management and office tools</h3><div class="tags"><span class="tag">Project Management</span><span class="tag">Microsoft Project</span><span class="tag">Microsoft Excel</span><span class="tag">Microsoft Word</span><span class="tag">Microsoft PowerPoint</span><span class="tag">Technical Report Writing</span></div></div>
+        <div class="skillrow"><h3>Personal strengths</h3><div class="tags"><span class="tag">Attention to Detail</span><span class="tag">Problem Solving</span><span class="tag">Analytical Thinking</span><span class="tag">Communication</span><span class="tag">Teamwork</span><span class="tag">Time Management</span><span class="tag">Adaptability</span><span class="tag">Self-Learning</span></div></div>
+        <div class="skillrow"><h3>Languages</h3><div class="tags"><span class="tag">Turkish, native</span><span class="tag">English, fluent</span><span class="tag">German, A1</span></div></div>
+        <div class="skillrow"><h3>Certifications</h3><div class="tags"><span class="tag">Short Range Radio Operator Certificate</span><span class="tag">Amateur Sailor Certificate</span></div></div>
+      </section>
+
+      <section id="contact">
+        <div class="sec-head"><h2>Contact</h2><p>Open to internships and entry-level mechanical engineering opportunities.</p></div>
+        <ul class="links">
+          <li><a href="mailto:boraykaskavalci@gmail.com"><small>Email</small><span class="v">boraykaskavalci@gmail.com</span></a></li>
+          <li><a href="tel:+905353663926"><small>Phone</small><span class="v">+90 535 366 39 26</span></a></li>
+          <li><a href="https://www.linkedin.com/in/boray-ka%C5%9Fkavalc%C4%B1-a6438383" target="_blank" rel="noopener"><small>LinkedIn</small><span class="v">linkedin.com/in/boray-kaşkavalcı</span></a></li>
+          <li><div class="plain"><small>Location</small><span class="v">Izmir, Türkiye</span></div></li>
+        </ul>
+
+        <div class="cv" id="cv">
+          <div class="cv-body">
+            <div>
+              <h2>Download my CV</h2>
+              <p>One page, plain text layout, PDF.</p>
+            </div>
+            <a class="btn solid" href="Boray_Kaskavalci_CV.pdf">Download CV</a>
+          </div>
+        </div>
+      </section>
+
+      <footer>© 2026 Boray Kaşkavalcı</footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  // Two meshing gears. Module m, pitch radius = m * teeth / 2, centre distance = sum of pitch radii.
+  (function () {
+    var NS = "http://www.w3.org/2000/svg", m = 9;
+    function pt(cx, cy, r, a) { return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
+    function outline(cx, cy, N, phase) {
+      var p = m * N / 2, rt = p + m, rr = p - 1.25 * m, step = 2 * Math.PI / N, d = "";
+      for (var i = 0; i < N; i++) {
+        var t = phase + i * step;
+        var a = pt(cx, cy, rr, t), b = pt(cx, cy, rt, t + 0.17 * step), c = pt(cx, cy, rt, t + 0.43 * step),
+            e = pt(cx, cy, rr, t + 0.60 * step), n = pt(cx, cy, rr, t + step);
+        d += (i === 0 ? "M" : "L") + a[0].toFixed(2) + " " + a[1].toFixed(2) +
+             "L" + b[0].toFixed(2) + " " + b[1].toFixed(2) + "L" + c[0].toFixed(2) + " " + c[1].toFixed(2) +
+             "L" + e[0].toFixed(2) + " " + e[1].toFixed(2) +
+             "A" + rr + " " + rr + " 0 0 1 " + n[0].toFixed(2) + " " + n[1].toFixed(2);
+      }
+      return d + "Z";
+    }
+    function el(name, attrs, parent) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      parent.appendChild(n); return n;
+    }
+    function gear(svg, cls, cx, cy, N, phase, color, holes) {
+      var g = el("g", { "class": cls }, svg), p = m * N / 2, rr = p - 1.25 * m;
+      el("path", { d: outline(cx, cy, N, phase), fill: color, "fill-opacity": ".07", stroke: color, "stroke-width": "1.6", "stroke-linejoin": "round", "stroke-opacity": ".85" }, g);
+      el("circle", { cx: cx, cy: cy, r: rr * 0.9, fill: "none", stroke: color, "stroke-opacity": ".25", "stroke-width": "1" }, g);
+      el("circle", { cx: cx, cy: cy, r: rr * 0.27, fill: "none", stroke: color, "stroke-width": "1.6", "stroke-opacity": ".85" }, g);
+      el("circle", { cx: cx, cy: cy, r: rr * 0.09, fill: color, "fill-opacity": ".85" }, g);
+      for (var i = 0; i < holes; i++) {
+        var a = i * 2 * Math.PI / holes, h = pt(cx, cy, rr * 0.6, a);
+        el("circle", { cx: h[0].toFixed(2), cy: h[1].toFixed(2), r: (rr * 0.13).toFixed(2), fill: "none", stroke: color, "stroke-opacity": ".55", "stroke-width": "1.2" }, g);
+      }
+    }
+    var svg = document.getElementById("gears");
+    if (!svg) return;
+    var n1 = 24, n2 = 12, s1 = 2 * Math.PI / n1, s2 = 2 * Math.PI / n2;
+    var c1 = [128, 125], dist = m * (n1 + n2) / 2, c2 = [c1[0] + dist, c1[1]];
+    gear(svg, "g1", c1[0], c1[1], n1, -0.8 * s1, "#e2bb6a", 6);
+    gear(svg, "g2", c2[0], c2[1], n2, Math.PI - 0.30 * s2, "#6f9de3", 4);
+  })();
+
+  // Highlight the current section in the index.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".index nav a"));
+    var ids = ["top", "about", "education", "experience", "skills", "contact"];
+    function mark() {
+      var y = window.scrollY + 140, cur = "top";
+      ids.forEach(function (id) { var e = document.getElementById(id); if (e && e.getBoundingClientRect().top + window.scrollY <= y) cur = id; });
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) cur = "contact";
+      links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + cur); });
+    }
+    window.addEventListener("scroll", mark, { passive: true }); mark();
+  })();
+</script>
+</body>
+</html>
