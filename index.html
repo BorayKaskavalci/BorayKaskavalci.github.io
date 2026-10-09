@@ -91,6 +91,10 @@
   .spec dt { color: var(--muted); font-size: .95rem; }
   .spec dd { margin: 0; font-weight: 500; }
 
+  .about-top { display: grid; gap: 22px; }
+  .portrait { margin: 0; max-width: 240px; order: -1; }
+  .portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; border: 1px solid var(--rule); background: var(--raised); }
+
   /* Rows: date left, content right */
   .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 22px; border-bottom: 1px solid var(--rule); }
   .row:first-of-type { padding-top: 0; }
@@ -139,6 +143,8 @@
     .index-contact a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
     .index-contact a:hover { color: var(--straw-hi); }
     main { padding: 0 56px 72px; }
+    .about-top { grid-template-columns: minmax(0, 1fr) 220px; gap: 36px; align-items: start; }
+    .portrait { order: 2; }
     .hero { grid-template-columns: minmax(0, 1fr) 300px; align-items: center; padding-block: 76px 64px; gap: 36px; }
     .spec div { grid-template-columns: 170px minmax(0, 1fr); gap: 16px; }
     .row { grid-template-columns: 170px minmax(0, 1fr); gap: 24px; }
@@ -193,7 +199,10 @@
 
       <section id="about">
         <div class="sec-head"><h2>About</h2></div>
-        <p>Mechanical Engineering student at Yaşar University with working knowledge of AutoCAD, Fusion 360 and MATLAB, backed by coursework in mechanical design, manufacturing processes, thermodynamics, heat transfer, materials science and energy efficiency. Completed an internship at ZF Lemförder and has two years of customer-facing experience as a Luxury Watch Specialist.</p>
+        <div class="about-top">
+          <figure class="portrait"><img src="boray.jpg" alt="Portrait of Boray Kaşkavalcı" width="400" height="500" onerror="this.parentNode.style.display='none'"></figure>
+          <p>Mechanical Engineering student at Yaşar University with working knowledge of AutoCAD, Fusion 360 and MATLAB, backed by coursework in mechanical design, manufacturing processes, thermodynamics, heat transfer, materials science and energy efficiency. Completed an internship at ZF Lemförder and has two years of customer-facing experience as a Luxury Watch Specialist.</p>
+        </div>
         <dl class="spec" style="margin-top: 22px;">
           <div><dt>Program</dt><dd>B.Sc. Mechanical Engineering, since 2022</dd></div>
           <div><dt>University</dt><dd>Yaşar University, Izmir</dd></div>
